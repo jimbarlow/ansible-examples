@@ -5,5 +5,5 @@
   tasks:
     - name: ensure all installed packages are up to date
       yum:
-        name: *
+        name: '*'
         state: latest
