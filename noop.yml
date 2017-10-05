@@ -1,0 +1,6 @@
+---
+- name: Example playbook that does nothing.
+  hosts: localhost
+  connection: local
+  tasks:
+    - debug: This playbook does nothing.
