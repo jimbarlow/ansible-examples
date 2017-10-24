@@ -42,7 +42,7 @@
         tags: "{{ item.1.tags | combine(demo_tags) }}"
         ami_name: "{{ item.1.ami_name | default(None) }}"
         ami_id: "{{ item.1.ami_id | default(None) }}"
-        type: "{{ item.1.instance_type | default('t2.micro') }}"
+        type: "{{ item.1.instance_type | default(instance_type) | default('t2.micro') }}"
         count: "{{ item.1.count | default(1) }}"
         wait_port: "{{ item.1.wait_port | default(None)}}"
       with_indexed_items: "{{ aws_instances | default([]) }}"
