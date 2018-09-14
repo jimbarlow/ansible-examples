@@ -1,2 +1,2 @@
-[wordpress-server]
-webserver2
+[web]
+webber1 ansible_host=23.96.54.164 (web_public_1)
