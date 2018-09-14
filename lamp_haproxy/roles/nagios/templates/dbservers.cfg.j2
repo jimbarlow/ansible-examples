@@ -1,17 +1,17 @@
 # {{ ansible_managed }}
 
 define hostgroup {
-	hostgroup_name dbservers
+	hostgroup_name type_db
         alias Database Servers
 }
 
-{% for host in groups.tag_Group_dbservers %}
+{% for host in groups.tag_Group_type_db %}
         define host {
                 use                     linux-server
                 host_name               {{ host }}
                 alias                   {{ host }}
                 address                 {{ hostvars[host].ansible_default_ipv4.address }}
-                hostgroups              dbservers
+                hostgroups              type_db
                 }
 {% endfor %}
 

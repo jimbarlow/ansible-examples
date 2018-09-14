@@ -30,10 +30,10 @@ defaults
     maxconn                 3000
 
 backend app
-    {% for host in groups.tag_Group_lbservers %}
+    {% for host in groups.tag_Group_type_lb %}
     	listen {{ daemonname }} 0.0.0.0:{{ listenport }}
     {% endfor %}
     balance     {{ balance }}
-    {% for host in groups.tag_Group_webservers %}
+    {% for host in groups.tag_Group_type_db %}
         server {{ host }} {{ hostvars[host]['ansible_' + iface].ipv4.address }}:{{ httpd_port }}
     {% endfor %}

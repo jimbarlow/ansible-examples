@@ -5,15 +5,15 @@
 :FORWARD ACCEPT [0:0]
 :OUTPUT ACCEPT [0:0]
 
-{% if (inventory_hostname in groups.webservers) or (inventory_hostname in groups.monitoring) %}
+{% if (inventory_hostname in groups.type_web) or (inventory_hostname in groups.monitoring) %}
 -A INPUT -p tcp  --dport 80 -j ACCEPT
 {% endif %}
 
-{% if (inventory_hostname in groups.dbservers) %}
+{% if (inventory_hostname in groups.type_db) %}
 -A INPUT -p tcp  --dport 3306 -j  ACCEPT
 {% endif %}
 
-{% if (inventory_hostname in groups.lbservers) %}
+{% if (inventory_hostname in groups.type_lb) %}
 -A INPUT -p tcp  --dport {{ listenport }} -j  ACCEPT
 {% endif %}
 
